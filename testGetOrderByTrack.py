@@ -5,7 +5,7 @@ import data
 import script
 import pytest
 
-def positive_assert():
+def test_get_order_by_track_return_success_response():
 
     # создаем новый заказ
     new_order = script.create_order(data.order_body)
@@ -25,7 +25,7 @@ def positive_assert():
     # проверям, что номер заказа тот же, что мы получили при создании заказа выше
     assert new_order_by_track.json()["order"]["track"] == track_id, "Номер заказа неверен, должен быть " + track_id + "а мы получили " + new_order_by_track.json()["order"]["track"]
 
-    #проверяем некоторые другие поля в заказе
+    # проверяем некоторые другие поля в заказе
     assert new_order_by_track.json()["order"]["firstName"] == data.order_body["firstName"]
     assert new_order_by_track.json()["order"]["lastName"] == data.order_body["lastName"]
     assert new_order_by_track.json()["order"]["address"] == data.order_body["address"]
@@ -33,6 +33,5 @@ def positive_assert():
     assert new_order_by_track.json()["order"]["phone"] == data.order_body["phone"]
     assert new_order_by_track.json()["order"]["comment"] == data.order_body["comment"]
 
-def test_get_order_by_track_return_success_response():
-    positive_assert()
+test_get_order_by_track_return_success_response()
 

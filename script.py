@@ -13,6 +13,7 @@ def create_order(body):
                   headers = data.headers)
 
 # функция для получения заказа по номеру track заказа
+# на входе должна получать номер заказа
 def getOrderByOrderTrack(track):
     return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_BY_TRACK + "?t=" + str(track),
                         headers = data.headers)
